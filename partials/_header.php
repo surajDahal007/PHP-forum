@@ -15,17 +15,7 @@
           <li class="nav-item">
             <a class="nav-link" href="about.php">About</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+          
           <li class="nav-item">
             <a href="contact.php" class="nav-link">Contact</a>
           </li>
@@ -33,9 +23,9 @@
 
         if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin']) ) {
           echo '
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
+          <form class="d-flex" role="search" method="get" action="search.php">           
+            <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" "type="submit">Search</button>
             <p class="text-light my-2 mx-3">'. $_SESSION['username'] .'</p>
             <a href="partials/_logout.php" class="btn btn-outline-primary">Logout</a>
           </form>
@@ -44,8 +34,8 @@
 // /forum/partials
         }else {
           echo '
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" role="search" method="get" action="search.php">
+            <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-success" type="submit">Search</button>
           </form>
           <div class="mx-2">
@@ -54,15 +44,6 @@
           </div>
           ';
         }
-
-        // <form class="d-flex" role="search">
-        //   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        //   <button class="btn btn-success" type="submit">Search</button>
-        // </form>
-        // <div class="mx-2">
-        //     <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-        //     <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</button>
-        // </div>
         echo'
       </div>
     </div>

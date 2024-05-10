@@ -17,11 +17,14 @@
         $threadid = $_GET['threadid'];
 
         //user_id 
-        $name_user_commentedby = $_SESSION['username'];
-        $sql2 = "SELECT sno FROM `users` WHERE user_name = '$name_user_commentedby'";
-        $result2 = mysqli_query($conn, $sql2);
-        $row2= mysqli_fetch_assoc($result2);
-        $sno = $row2['sno'];
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+            $name_user_commentedby = $_SESSION['username'];
+            $sql2 = "SELECT sno FROM `users` WHERE user_name = '$name_user_commentedby'";
+            $result2 = mysqli_query($conn, $sql2);
+            $row2= mysqli_fetch_assoc($result2);
+            $sno = $row2['sno'];
+        }
+       
 
         $sql = "SELECT * FROM `threads` WHERE thread_id = '$threadid'";
         $result = mysqli_query($conn, $sql);
@@ -39,6 +42,7 @@
         }
     ?>
 
+    <!-- post  -->
     <?php
         $method = $_SERVER['REQUEST_METHOD'];
         $showalert = false;
@@ -47,6 +51,9 @@
             // INSERT commebt INTO db
             $threadid = $_GET['threadid'];
             $comment = $_POST['comment'];
+
+            $comment = str_replace("<", "&lt;", $comment);
+            $comment = str_replace(">", "&gt;", $comment);
           
             
             // $sql2 = "SELECT sno FROM `users` WHERE user_name = '$name_user_commentedby'";
@@ -134,7 +141,7 @@
     }
     ?>
 
-    <div class="container">
+    <div class="container mb-5">
         <h1 class="py-2">Discussions</h1>
 
         <?php
@@ -159,7 +166,7 @@
                     <img src="images/userDefault.png" class="mr-3" alt="User Image" width="37px">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                <p class="my-0"><b>'. $row2['user_name'] .'</b> <small class="text-muted"> at '. $comment_time .'</small> </p>
+                <p class="my-0"><b>'. $row2['user_name'] .'</b><em><small class="text-muted"> at '. $comment_time .'</small></em> </p>
                     '. $content .'
                 </div>
             </div>';

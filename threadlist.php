@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,6 +29,13 @@
             // INSERT thread INTO DATABASE
             $th_title = $_POST['title'];
             $th_desc = $_POST['description'];
+
+            //for xss attack prevention
+            $th_title = str_replace("<", "&lt;", $th_title);
+            $th_title = str_replace(">", "&gt;", $th_title);
+
+            $th_desc = str_replace("<", "&lt;", $th_desc);
+            $th_desc = str_replace(">", "&gt;", $th_desc);
 
             $name_user_commentedby = $_SESSION['username'];
             $sql2 = "SELECT sno FROM `users` WHERE user_name = '$name_user_commentedby'";
@@ -125,7 +131,8 @@
 
     ?>
 
-    <div class="container">
+    <!-- display discussion -->
+    <div class="container mb-5">
         <h1 class="py-2">Browse Questions</h1>
         <!-- Loop for questions here  -->
         <?php
@@ -148,14 +155,14 @@
                 $row2= mysqli_fetch_assoc($result2);
 
                 echo '
-                    <div class="d-flex my-3">
+                    <div class="d-flex my-4">
                         <div class="flex-shrink-0">
                             <img src="images/userDefault.png" class="mr-3" alt="User Image" width="37px">
                         </div>
                         <div class="flex-grow-1 ms-3">
                             <h5><a class="text-dark" href="thread.php?threadid='. $thread_id .'">'. $thread_title .'</a></h5>
                             '. $thread_desc .'
-                            <p class="font-weight-bold my-0"><strong>ASKED BY - '. $row2['user_name'] .'</strong> at <small class="text-muted">'. $thread_time .'</small></p>
+                            <p class="font-weight-bold my-0"><strong>ASKED BY - '. $row2['user_name'] .'</strong> at <small class="text-muted"><em>'. $thread_time .'</em></small></p>
                         </div>
                     </div>';
             }
