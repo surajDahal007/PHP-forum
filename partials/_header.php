@@ -23,7 +23,7 @@
 
         if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin']) ) {
           echo '
-          <form class="d-flex" role="search" method="get" action="search.php">           
+          <form class="d-flex" role="search" method="get" action="/search.php">           
             <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-success" "type="submit">Search</button>
             <p class="text-light my-2 mx-3">'. $_SESSION['username'] .'</p>
@@ -34,7 +34,7 @@
 // /forum/partials
         }else {
           echo '
-          <form class="d-flex" role="search" method="get" action="search.php">
+          <form class="d-flex" role="search" method="get" action="/search.php">
             <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-success" type="submit">Search</button>
           </form>
