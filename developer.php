@@ -7,27 +7,18 @@
     <title>iDiscuss - Coding Forum</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <style>
-    #details {
-        margin-left: 70vh;
-        /* align-items: center; */
-    }
-    </style>
 </head>
 
 <body>
     <?php include 'partials/_header.php'; ?>
 
-    <div class="container">
+    <div class="container align-items-center">
         <h1 class="text-center my-3 display-5">About Developer</h1>
 
-        <div class="my-2">
-            <img class="bd-placeholder-img rounded-circle my-2 " id='details' src="images/developer.jpg" height="270px"
+        <div class="my-5">
+            <img class="rounded-circle mx-auto d-block my-3" src="images/developer.jpg" height="260px"
                 alt="developer image">
-            <!-- https://github.com/surajDahal007 -->
             <div class=" text-center">
-
                 <h2 class="fw-normal">Suraj Dahal</h2>
                 <p>Suraj Dahal is a computer engineer having proficiency in web development, software development and
                     blockchain.</p>
@@ -39,8 +30,7 @@
                         </svg>
                         View Github »</a>
                 </p>
-                <p><a class="btn btn-primary" href="https://www.linkedin.com/in/suraj-dahal-130273203/"
-                        target="_blank">
+                <p><a class="btn btn-primary" href="https://www.linkedin.com/in/suraj-dahal-130273203/" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-linkedin" viewBox="0 0 16 16">
                             <path
@@ -48,7 +38,6 @@
                         </svg>
                         View LinkedIn »
                     </a></p>
-
             </div>
         </div>
     </div>
