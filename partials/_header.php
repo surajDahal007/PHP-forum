@@ -19,6 +19,10 @@
           <li class="nav-item">
             <a href="contact.php" class="nav-link">Contact</a>
           </li>
+
+          <li class="nav-item">
+          <a href="developer.php" class="nav-link">Developer</a>
+          </li>
         </ul>';
 
         if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin']) ) {
